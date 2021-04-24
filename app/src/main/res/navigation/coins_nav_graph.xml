@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/coins_nav_graph"
+    app:startDestination="@id/coinFragment">
+
+
+    <fragment
+        android:id="@+id/coinFragment"
+        android:name="com.androiddevs.ucanbit.ui.fragments.CoinFragment"
+        android:label="CoinFragment" />
+    <fragment
+        android:id="@+id/coinsListFragment"
+        android:name="com.androiddevs.ucanbit.ui.fragments.CoinsListFragment"
+        android:label="CoinsListFragment" >
+        <action
+            android:id="@+id/action_coinsListFragment_to_coinFragment"
+            app:destination="@id/coinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/saveCoinsFragment"
+        android:name="com.androiddevs.ucanbit.ui.fragments.SaveCoinsFragment"
+        android:label="SaveCoinsFragment" >
+        <action
+            android:id="@+id/action_saveCoinsFragment_to_coinFragment"
+            app:destination="@id/coinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/searchCoinsFragment"
+        android:name="com.androiddevs.ucanbit.ui.fragments.SearchCoinsFragment"
+        android:label="SearchCoinsFragment" >
+        <action
+            android:id="@+id/action_searchCoinsFragment_to_coinFragment"
+            app:destination="@id/coinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+</navigation>
