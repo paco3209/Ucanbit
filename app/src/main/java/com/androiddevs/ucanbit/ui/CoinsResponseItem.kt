@@ -1,6 +1,15 @@
 package com.androiddevs.ucanbit.ui
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity(
+    tableName = "coins"
+)
 data class CoinsResponseItem(
+
+    @PrimaryKey val id: String,
     val ath: Double,
     val ath_change_percentage: Double,
     val ath_date: String,
@@ -11,7 +20,7 @@ data class CoinsResponseItem(
     val current_price: Double,
     val fully_diluted_valuation: Long,
     val high_24h: Double,
-    val id: String,
+
     val image: String,
     val last_updated: String,
     val low_24h: Double,
