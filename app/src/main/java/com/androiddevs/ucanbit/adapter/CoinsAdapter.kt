@@ -1,4 +1,4 @@
-package com.androiddevs.ucanbit.ui.adapter
+package com.androiddevs.ucanbit.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.ucanbit.R
-import com.androiddevs.ucanbit.ui.models.CoinsResponseItem
+import com.androiddevs.ucanbit.models.CoinsResponseItem
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_article_preview.view.*
 

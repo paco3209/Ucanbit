@@ -1,3 +1,3 @@
-package com.androiddevs.ucanbit.ui.models
+package com.androiddevs.ucanbit.models
 
 class CoinsResponse : ArrayList<CoinsResponseItem>()

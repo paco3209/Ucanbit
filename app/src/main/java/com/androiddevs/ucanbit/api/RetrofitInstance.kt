@@ -1,6 +1,6 @@
-package com.androiddevs.ucanbit.ui.api
+package com.androiddevs.ucanbit.api
 
-import com.androiddevs.ucanbit.ui.util.Constants.Companion.BASE_URL
+import com.androiddevs.ucanbit.util.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

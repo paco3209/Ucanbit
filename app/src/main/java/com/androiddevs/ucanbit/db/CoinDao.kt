@@ -1,8 +1,8 @@
-package com.androiddevs.ucanbit.ui.db
+package com.androiddevs.ucanbit.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.androiddevs.ucanbit.ui.models.CoinsResponseItem
+import com.androiddevs.ucanbit.models.CoinsResponseItem
 
 @Dao
 interface CoinDao {

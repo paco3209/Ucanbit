@@ -1,4 +1,4 @@
-package com.androiddevs.ucanbit.ui.db
+package com.androiddevs.ucanbit.db
 
 import android.content.Context
 import androidx.room.Database

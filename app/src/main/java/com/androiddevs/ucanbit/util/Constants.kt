@@ -1,4 +1,4 @@
-package com.androiddevs.ucanbit.ui.util
+package com.androiddevs.ucanbit.util
 
 class Constants {
     companion object{
