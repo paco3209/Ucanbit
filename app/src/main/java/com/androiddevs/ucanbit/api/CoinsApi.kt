@@ -19,7 +19,10 @@ interface CoinsApi {
 
     @GET("coins/markets")
     suspend fun searchCoin(
+        @Query("ids")
         searchQuery: String,
+        @Query("vs_currency")
+        vs_currency: String = "usd",
         @Query("per_page")
         per_page: Int = 20,
         @Query("price_change_percentage")

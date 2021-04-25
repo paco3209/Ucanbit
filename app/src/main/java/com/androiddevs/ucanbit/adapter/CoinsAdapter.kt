@@ -40,10 +40,20 @@ class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinViewHolder>() {
         val coin = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(coin.image).into(ivArticleImage)
-            tvSource.text = coin.name
-            tvTitle.text = coin.id
-            tvDescription.text = coin.price_change_24h.toString()
-            tvPublishedAt.text = coin.current_price.toString()
+            tvSymbol.text = coin.symbol
+            tvCoin.text = coin.name
+            tvValue.text = String.format("%.2f",coin.current_price) + " US$"
+            if(coin.price_change_24h < 0){
+                tvVariation.setTextColor(resources.getColor((R.color.colorDown)))
+                tvPercentaje.setTextColor(resources.getColor(R.color.colorDown))
+            }else{
+                tvVariation.setTextColor(resources.getColor(R.color.colorUP))
+                tvPercentaje.setTextColor(resources.getColor(R.color.colorUP))
+            }
+
+            tvVariation.text = String.format("%.2f",coin.price_change_24h)
+            tvPercentaje.text =  "( " + String.format("%.2f" ,coin.price_change_percentage_24h)  + " %)"
+
             setOnItemClickListener {
                 onItemClickListener?.let { it(coin) }
             }

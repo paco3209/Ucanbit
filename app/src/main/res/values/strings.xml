@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UcanBit</string>
+    <string name="porcentage">%d %%</string>
 </resources>

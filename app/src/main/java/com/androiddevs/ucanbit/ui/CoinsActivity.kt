@@ -20,7 +20,9 @@ class CoinsActivity : AppCompatActivity() {
 
         val coinsRepository = CoinsRepository(CoinDatabase(this))
         val viewModelProviderFactory = CoinsViewModelProviderFactory(coinsRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get((CoinsViewModel::class.java))
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(CoinsViewModel::class.java)
+
+
 
         bottomNavigationView.setupWithNavController(coinsNavHostFragment.findNavController())
 

@@ -14,7 +14,9 @@ class CoinsViewModel(
 ) : ViewModel(){
 
     val coins: MutableLiveData<Resource<CoinsResponse>> = MutableLiveData()
-    val coinsPage = 1
+    var coinsPage = 1
+
+    val searchCoin: MutableLiveData<Resource<CoinsResponse>> = MutableLiveData()
 
     init {
         getCoins()
@@ -24,13 +26,28 @@ class CoinsViewModel(
         coins.postValue(Resource.Loading())
         val response = coinsRepository.getCoins()
         coins.postValue(handleCoinsResponse(response))
+    }
+
+    fun getSearchCoins(coinName: String) = viewModelScope.launch {
+        searchCoin.postValue(Resource.Loading())
+        val response = coinsRepository.getSearchCoins(coinName)
+        searchCoin.postValue(handleSearchCoinResponse(response))
+    }
+
+    private fun handleSearchCoinResponse(response: Response<CoinsResponse>): Resource<CoinsResponse> {
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
 
     }
 
     private fun handleCoinsResponse(response: Response<CoinsResponse>): Resource<CoinsResponse>{
-        if(response.isSuccessful){
-            response.body()?.let {
-                return Resource.Success(it)
+        if(response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
             }
         }
         return Resource.Error(response.message())

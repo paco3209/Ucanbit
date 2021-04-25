@@ -9,4 +9,7 @@ class CoinsRepository(
 
         suspend fun getCoins() = RetrofitInstance.api.getCoinsList()
 
+        suspend fun getSearchCoins(searchQuery: String) =
+            RetrofitInstance.api.searchCoin(searchQuery,"usd",20,"1h,7d,30d")
+
 }
