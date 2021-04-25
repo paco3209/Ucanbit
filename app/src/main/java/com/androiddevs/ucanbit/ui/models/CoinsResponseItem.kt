@@ -1,4 +1,4 @@
-package com.androiddevs.ucanbit.ui
+package com.androiddevs.ucanbit.ui.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
