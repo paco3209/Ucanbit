@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.ucanbit.R
 import com.androiddevs.ucanbit.adapter.CoinsAdapter
@@ -23,6 +24,18 @@ class CoinsListFragment: Fragment(R.layout.fragment_breaking_news) {
         viewModel= (activity as CoinsActivity).viewModel
 
         setupRecyclerView()
+
+
+
+        coinsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("coin", it)
+            }
+            findNavController().navigate(
+                R.id.action_coinsListFragment_to_coinFragment,
+                bundle
+            )
+        }
 
         viewModel.coins.observe(viewLifecycleOwner, Observer {
             when(it){

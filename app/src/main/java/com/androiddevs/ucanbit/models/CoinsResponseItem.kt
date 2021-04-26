@@ -2,6 +2,7 @@ package com.androiddevs.ucanbit.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(
@@ -38,4 +39,4 @@ data class CoinsResponseItem(
     val symbol: String,
     val total_supply: Double,
     val total_volume: Long
-)
+): Serializable

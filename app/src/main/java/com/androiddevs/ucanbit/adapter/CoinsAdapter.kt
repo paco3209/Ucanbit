@@ -11,21 +11,22 @@ import com.androiddevs.ucanbit.models.CoinsResponseItem
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_article_preview.view.*
 
-class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinViewHolder>() {
+class CoinsAdapter : RecyclerView.Adapter<CoinsAdapter.CoinViewHolder>() {
 
     inner class CoinViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
-        private val differCallback = object : DiffUtil.ItemCallback<CoinsResponseItem>() {
-            override fun areItemsTheSame(oldItem: CoinsResponseItem, newItem: CoinsResponseItem): Boolean {
-                return oldItem.last_updated == newItem.last_updated
-            }
-
-            override fun areContentsTheSame(oldItem: CoinsResponseItem, newItem: CoinsResponseItem): Boolean {
-                return oldItem == newItem
-            }
+    private val differCallback = object : DiffUtil.ItemCallback<CoinsResponseItem>() {
+        override fun areItemsTheSame(oldItem: CoinsResponseItem, newItem: CoinsResponseItem): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        val differ = AsyncListDiffer(this, differCallback)
+        override fun areContentsTheSame(oldItem: CoinsResponseItem, newItem: CoinsResponseItem): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val differ = AsyncListDiffer(this, differCallback)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinViewHolder {
         return CoinViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -35,6 +36,12 @@ class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinViewHolder>() {
             )
         )
     }
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
+    private var onItemClickListener: ((CoinsResponseItem) -> Unit)? = null
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         val coin = differ.currentList[position]
@@ -54,22 +61,19 @@ class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinViewHolder>() {
             tvVariation.text = String.format("%.2f",coin.price_change_24h)
             tvPercentaje.text =  "( " + String.format("%.2f" ,coin.price_change_percentage_24h)  + " %)"
 
-            setOnItemClickListener {
+            setOnClickListener {
                 onItemClickListener?.let { it(coin) }
             }
         }
     }
 
-
-    override fun getItemCount(): Int {
-        return differ.currentList.size
-    }
-
-    private var onItemClickListener: ((CoinsResponseItem) -> Unit)? = null
-
     fun setOnItemClickListener(listener: (CoinsResponseItem) -> Unit) {
         onItemClickListener = listener
     }
 
-
 }
+
+
+
+
+

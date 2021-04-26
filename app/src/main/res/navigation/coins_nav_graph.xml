@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/coinFragment"
         android:name="com.androiddevs.ucanbit.ui.fragments.CoinFragment"
-        android:label="CoinFragment" />
+        android:label="CoinFragment" >
+        <argument
+            android:name="coin"
+            app:argType="com.androiddevs.ucanbit.models.CoinsResponseItem" />
+    </fragment>
     <fragment
         android:id="@+id/coinsListFragment"
         android:name="com.androiddevs.ucanbit.ui.fragments.CoinsListFragment"
