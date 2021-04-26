@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androiddevs.ucanbit.models.CoinsResponse
+import com.androiddevs.ucanbit.models.CoinsResponseItem
 import com.androiddevs.ucanbit.repository.CoinsRepository
 import com.androiddevs.ucanbit.util.Resource
 import kotlinx.coroutines.launch
@@ -53,6 +54,16 @@ class CoinsViewModel(
         return Resource.Error(response.message())
     }
 
+
+    fun saveCoin(coin:CoinsResponseItem) = viewModelScope.launch {
+        coinsRepository.upsert(coin)
+    }
+
+    fun getSavedNews() = coinsRepository.getSavedCoins()
+
+    fun deleteCoin(coin: CoinsResponseItem) = viewModelScope.launch {
+        coinsRepository.delete(coin)
+    }
 
 
 }
