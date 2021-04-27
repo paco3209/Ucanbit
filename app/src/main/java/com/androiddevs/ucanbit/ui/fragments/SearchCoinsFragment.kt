@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.ucanbit.R
 import com.androiddevs.ucanbit.adapter.CoinsAdapter
@@ -38,18 +39,17 @@ class SearchCoinsFragment: Fragment(R.layout.fragment_search_news) {
             viewModel.getSearchCoins(searchText)
         }
 
-    /*   etSearch.addTextChangedListener {
-            job?.cancel()
-            job = MainScope().launch {
-                delay(SEARCH_COINS_DELAY)
-                if(it.toString().isNotEmpty()){
-                    val searchCoinText = it.toString()
-                    viewModel.getSearchCoins(searchCoinText)
-                }
+
+        coinsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("coin", it)
             }
+            findNavController().navigate(
+                R.id.action_searchCoinsFragment_to_coinFragment,
+                bundle
+            )
         }
 
-*/
 
         viewModel.searchCoin.observe(viewLifecycleOwner, Observer {
             when(it){

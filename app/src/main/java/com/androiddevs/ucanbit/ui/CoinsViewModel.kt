@@ -25,7 +25,7 @@ class CoinsViewModel(
 
     fun getCoins() = viewModelScope.launch {
         coins.postValue(Resource.Loading())
-        val response = coinsRepository.getCoins()
+        val response = coinsRepository.getCoins(coinsPage)
         coins.postValue(handleCoinsResponse(response))
     }
 

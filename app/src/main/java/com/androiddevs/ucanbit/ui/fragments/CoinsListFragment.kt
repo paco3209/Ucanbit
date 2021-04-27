@@ -6,7 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.ucanbit.R
 import com.androiddevs.ucanbit.adapter.CoinsAdapter
 import com.androiddevs.ucanbit.ui.CoinsActivity
@@ -70,8 +72,12 @@ class CoinsListFragment: Fragment(R.layout.fragment_breaking_news) {
         coinsAdapter = CoinsAdapter()
         rvBreakingNews.apply {
             adapter = coinsAdapter
+
             layoutManager = LinearLayoutManager(activity)
         }
     }
+
+
+
 
 }

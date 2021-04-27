@@ -34,7 +34,7 @@ class SaveCoinsFragment: Fragment(R.layout.fragment_saved_news) {
                 putSerializable("coin", it)
             }
             findNavController().navigate(
-                R.id.action_coinsListFragment_to_coinFragment,
+                R.id.action_saveCoinsFragment_to_coinFragment,
                 bundle
             )
         }

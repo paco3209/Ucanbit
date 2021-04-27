@@ -9,10 +9,13 @@ interface CoinsApi {
 
     @GET("coins/markets")
     suspend fun getCoinsList(
+        @Query ("page")
+        page: Int = 1,
         @Query("vs_currency")
         vs_currency: String = "usd",
         @Query("per_page")
         per_page: Int = 20,
+
         @Query("price_change_percentage")
         price_change_percentage: String = "1h,7d,30d"
     ) : Response<CoinsResponse>

@@ -8,7 +8,7 @@ class CoinsRepository(
     val db: CoinDatabase
 ) {
 
-        suspend fun getCoins() = RetrofitInstance.api.getCoinsList()
+        suspend fun getCoins(page: Int) = RetrofitInstance.api.getCoinsList(page)
 
         suspend fun getSearchCoins(searchQuery: String) =
             RetrofitInstance.api.searchCoin(searchQuery,"usd",20,"1h,7d,30d")

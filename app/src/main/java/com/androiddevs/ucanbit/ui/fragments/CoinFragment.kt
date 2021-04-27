@@ -33,6 +33,8 @@ class CoinFragment: Fragment(R.layout.fragment_article) {
 
 
         txtCurrentPrice.text = String.format("%.2f",coin.current_price) + " US$"
+
+
         if(coin.price_change_24h < 0){
             txtPriceChange24.setTextColor(resources.getColor((R.color.colorDown)))
             txtPricePercentageChange24.setTextColor(resources.getColor(R.color.colorDown))
@@ -40,6 +42,12 @@ class CoinFragment: Fragment(R.layout.fragment_article) {
             txtPriceChange24.setTextColor(resources.getColor(R.color.colorUP))
             txtPricePercentageChange24.setTextColor(resources.getColor(R.color.colorUP))
         }
+
+        txtPriceChange24.text = String.format("%.2f",coin.price_change_24h)
+
+
+
+        txtPricePercentageChange24.text = "( " + String.format("%.2f" ,coin.price_change_percentage_24h)  + " %)"
 
         txtMarketCap.text = coin.market_cap.toString()
         txtCirculating.text = coin.circulating_supply.toString()
